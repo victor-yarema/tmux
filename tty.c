@@ -945,7 +945,6 @@ tty_fake_bce(const struct tty *tty, const struct grid_cell *gc, u_int bg)
 static void
 tty_redraw_region(struct tty *tty, const struct tty_ctx *ctx)
 {
-	struct client		*c = tty->client;
 	u_int			 i;
 
 	/*
@@ -953,7 +952,6 @@ tty_redraw_region(struct tty *tty, const struct tty_ctx *ctx)
 	 * to be followed by some more scrolling.
 	 */
 	if (tty_large_region(tty, ctx)) {
-		log_debug("%s: %s large redraw", __func__, c->name);
 		ctx->redraw_cb(ctx);
 		return;
 	}
